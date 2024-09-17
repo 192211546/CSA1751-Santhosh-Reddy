@@ -1,0 +1,43 @@
+class VacuumCleaner:
+    def __init__(self, grid):
+        self.grid = grid
+        self.rows = len(grid)
+        self.cols = len(grid[0])
+        self.visited = set()
+
+    def is_valid_move(self, x, y):
+        return 0 <= x < self.rows and 0 <= y < self.cols
+
+    def clean(self, x, y):
+        if self.is_valid_move(x, y):
+            print(f"Cleaning cell ({x}, {y})")
+            self.grid[x][y] = 0  # Marking the cell as clean
+
+    def dfs(self, x, y):
+        if not self.is_valid_move(x, y) or (x, y) in self.visited or self.grid[x][y] == 0:
+            return
+
+        self.visited.add((x, y))
+        self.clean(x, y)
+
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # right, down, left, up
+        for dx, dy in directions:
+            new_x, new_y = x + dx, y + dy
+            self.dfs(new_x, new_y)
+
+    def clean_all(self):
+        for i in range(self.rows):
+            for j in range(self.cols):
+                if self.grid[i][j] == 1 and (i, j) not in self.visited:
+                    self.dfs(i, j)
+
+
+grid = [
+    [1, 0, 1, 1],
+    [0, 1, 0, 1],
+    [1, 1, 1, 0],
+    [0, 0, 1, 1]
+]
+
+vacuum = VacuumCleaner(grid)
+vacuum.clean_all()
