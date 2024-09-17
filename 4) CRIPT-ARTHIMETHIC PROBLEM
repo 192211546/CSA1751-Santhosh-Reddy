@@ -1,0 +1,25 @@
+[0:01 pm, 13/03/2024] Damodar Burle: Ok
+[0:18 pm, 13/03/2024] Varshith SU#: from itertools import permutations
+
+def solve_cryptarithmetic(puzzle):
+    # Extracting unique characters from the puzzle
+    letters = ''.join(set(filter(str.isalpha, puzzle)))
+    if len(letters) > 10:
+        return "Invalid puzzle: More than 10 unique letters."
+
+    # Generate permutations for the unique letters
+    for perm in permutations('0123456789', len(letters)):
+        # Map each letter to a digit
+        mapping = dict(zip(letters, perm))
+        # Replace letters with corresponding digits
+        expression = puzzle.translate(str.maketrans(mapping))
+        # Check if the expression is valid
+        if eval(expression):
+            return mapping
+
+    return "No solution found."
+
+# Example usage:
+puzzle = "SEND + MORE == MONEY"
+solution = solve_cryptarithmetic(puzzle)
+print("Solution:", solution)
