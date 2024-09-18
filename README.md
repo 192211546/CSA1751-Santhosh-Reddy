@@ -75,3 +75,57 @@ Here are the algorithms for the given problems:
       3. Dequeue the node with the lowest cost and explore its neighbors.
       4. If the goal is reached, stop the search.
       5. Otherwise, update the costs of neighbors and continue exploring.
+
+### 11. **Map Coloring to Implement Constraint Satisfaction Problem (CSP)**:
+**Algorithm**:
+1. Define the graph structure (regions and their neighbors).
+2. Assign a list of colors available for each region.
+3. For each region:
+   - Try assigning a color to the region.
+   - Check if this color conflicts with any neighboring region (i.e., if a neighboring region already has this color).
+   - If there's no conflict, assign the color.
+   - If there's a conflict, backtrack and try a different color.
+4. Repeat until all regions are assigned colors without conflicts.
+
+### 12. **Tic-Tac-Toe Game**:
+**Algorithm**:
+1. Initialize a 3x3 board with empty cells.
+2. Assign one player as 'X' and the other as 'O'.
+3. Loop through the game steps:
+   - The current player selects a position on the board.
+   - Check if the position is valid (i.e., the cell is empty).
+   - Place the player’s symbol (X or O) in the selected position.
+   - Check if the current player wins by checking rows, columns, and diagonals.
+   - If no winner, alternate to the next player.
+4. The game ends when there is a winner or the board is fully occupied (resulting in a draw).
+
+### 13. **Minimax Algorithm for Gaming**:
+**Algorithm**:
+1. Define the possible game states (e.g., Tic-Tac-Toe board positions).
+2. For each possible move, simulate the game:
+   - Maximize the score for the current player.
+   - Minimize the score for the opponent.
+3. Recursively evaluate all possible future game states:
+   - If the current state is a win, assign a positive score.
+   - If the current state is a loss, assign a negative score.
+   - If it’s a draw, assign a score of 0.
+4. Select the move that maximizes the player’s chance of winning or minimizes the opponent’s.
+
+### 14. **Alpha-Beta Pruning Algorithm for Gaming**:
+**Algorithm**:
+1. Implement a Minimax algorithm to evaluate game states.
+2. Define two values, alpha (best option along the path for the maximizer) and beta (best option along the path for the minimizer).
+3. Traverse the game tree:
+   - At each node, prune branches where it is guaranteed that the current player can do better elsewhere (based on the alpha and beta values).
+4. Return the optimal move after pruning unnecessary branches.
+
+### 15. **Decision Tree**:
+**Algorithm**:
+1. Start with the entire dataset.
+2. Select the best attribute to split the data (based on criteria like information gain or Gini impurity).
+3. Split the dataset into subsets where each subset corresponds to one possible value of the selected attribute.
+4. Recursively repeat steps 2-3 for each subset, treating each as a new dataset.
+5. Stop when:
+   - All the instances in a subset belong to the same class.
+   - No more attributes are available to split on.
+6. The final decision tree is used to classify new instances by following the attribute splits from the root to the leaf nodes.
